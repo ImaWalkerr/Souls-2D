@@ -1,0 +1,90 @@
+/* canvas styles */
+
+canvas {
+    display: block;
+}
+
+.block {
+    position: relative;
+}
+
+.block__header {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 25px;
+}
+
+.block__player_1,
+.block__player_2 {
+    height: 80px;
+    width: 100%;
+}
+
+.block__name-player_1,
+.block__name-player_2 {
+    border-bottom: 30px solid burlywood;;
+}
+
+.block__name-player_1 {
+    border-left: 100px solid transparent;
+}
+
+.block__name-player_2 {
+    border-right: 100px solid transparent;
+}
+
+.block__health-player_1,
+.block__health-player_2 {
+    height: 40px;
+    width: 100%;
+}
+
+.block__health-player_1 {
+    background-color: fuchsia;
+}
+
+.block__health-player_2 {
+    background-color: chartreuse;
+}
+
+.block__time {
+    flex-shrink: 0;
+    height: 150px;
+    width: 150px;
+    background-color: aqua;
+}
+
+.block__timer {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    height: 100px;
+    width: 100px;
+    padding: 25px;
+    margin: 25px;
+}
+
+.block__skills-player_1,
+.block__skills-player_2 {
+    display: flex;
+    border-top: 40px solid red;
+}
+
+
+.block__skills-player_1 {
+    border-right: 320px solid transparent;
+}
+
+.block__skills-player_2 {
+    border-left: 320px solid transparent;
+}
+
+.player__skills {
+    text-align: center;
+    height: 40px;
+    width: 100%;
+    background-color: coral;
+}

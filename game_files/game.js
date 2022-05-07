@@ -9,7 +9,7 @@ ctx.fillRect(0, 0 , canvas.width, canvas.height)
 const gravity = 0.7
 
 class Sprite {
-    constructor({ position, velocity, color = 'red', offset }) {
+    constructor({ position, velocity, color = 'red', offset, ult_offset }) {
         this.position = position
         this.velocity = velocity
         this.width = 50
@@ -24,8 +24,18 @@ class Sprite {
             width: 100,
             height: 50,
         }
+        this.UltimateAttackBox = {
+            position: {
+                x: this.position.x,
+                y: this.position.y
+            },
+            ult_offset,
+            width: 300,
+            height: 50,
+        }
         this.color = color
         this.isAttacking
+        this.isUltimateAttacking
     }
 
     draw () {
@@ -42,6 +52,15 @@ class Sprite {
                 this.attackBox.height
             )
         }
+        if (this.isUltimateAttacking) {
+            ctx.fillStyle = 'yellow'
+            ctx.fillRect(
+                this.UltimateAttackBox.position.x,
+                this.UltimateAttackBox.position.y,
+                this.UltimateAttackBox.width,
+                this.UltimateAttackBox.height
+            )
+        }
     }
 
     update () {
@@ -49,6 +68,8 @@ class Sprite {
 
         this.attackBox.position.x = this.position.x + this.attackBox.offset.x
         this.attackBox.position.y = this.position.y
+        this.UltimateAttackBox.position.x = this.position.x + this.UltimateAttackBox.ult_offset.x
+        this.UltimateAttackBox.position.y = this.position.y
         this.position.x += this.velocity.x
         this.position.y += this.velocity.y
 
@@ -65,6 +86,12 @@ class Sprite {
             this.isAttacking = false
         }, 100)
     }
+    ultimate_attack () {
+        this.isUltimateAttacking = true
+        setTimeout(() => {
+            this.isUltimateAttacking = false
+        }, 100)
+    }
 }
 
 const player = new Sprite({
@@ -77,6 +104,10 @@ const player = new Sprite({
         y: 0,
     },
     offset: {
+        x: 0,
+        y: 0,
+    },
+    ult_offset: {
         x: 0,
         y: 0,
     }
@@ -95,10 +126,15 @@ const enemy = new Sprite({
         x: -50,
         y: 0,
     },
+    ult_offset: {
+        x: -250,
+        y: 0,
+    },
     color: 'blue'
 })
 
 console.log(player);
+console.log(enemy);
 
 const keys = {
     a: {
@@ -121,6 +157,15 @@ function rectangularCollision({ rectangle_1, rectangle_2 }) { // rectangle_1 = p
         rectangle_1.attackBox.position.x <= rectangle_2.position.x + rectangle_2.width &&
         rectangle_1.attackBox.position.y + rectangle_1.attackBox.height >= rectangle_2.position.y &&
         rectangle_1.attackBox.position.y <= rectangle_2.position.y + rectangle_2.height
+    )
+}
+
+function rectangularCollisionForUltimate({ rectangle_1, rectangle_2 }) {
+    return (
+        rectangle_1.UltimateAttackBox.position.x + rectangle_1.UltimateAttackBox.width >= rectangle_2.position.x &&
+        rectangle_1.UltimateAttackBox.position.x <= rectangle_2.position.x + rectangle_2.width &&
+        rectangle_1.UltimateAttackBox.position.y + rectangle_1.UltimateAttackBox.height >= rectangle_2.position.y &&
+        rectangle_1.UltimateAttackBox.position.y <= rectangle_2.position.y + rectangle_2.height
     )
 }
 
@@ -174,6 +219,29 @@ function animation() {
         enemy.isAttacking = false
         console.log('enemy attack successful')
     }
+
+    if (
+        rectangularCollisionForUltimate({
+            rectangle_1: player,
+            rectangle_2: enemy
+        }) &&
+        player.isUltimateAttacking
+    ) {
+        player.isUltimateAttacking = false
+        console.log('player ultimate attack successful')
+    }
+
+    if (
+        rectangularCollisionForUltimate({
+            rectangle_1: enemy,
+            rectangle_2: player
+        }) &&
+        enemy.isUltimateAttacking
+    ) {
+        enemy.isUltimateAttacking = false
+        console.log('enemy ultimate attack successful')
+    }
+
 }
 
 animation()
@@ -196,6 +264,9 @@ window.addEventListener('keydown', (event) => {
         case ' ':
             player.attack()
             break
+        case 'e':
+            player.ultimate_attack()
+            break
 
         // enemy controls //
         case 'ArrowRight':
@@ -206,11 +277,14 @@ window.addEventListener('keydown', (event) => {
             keys.ArrowLeft.pressed = true
             enemy.lastKey = 'ArrowLeft'
             break
-        case 'ArrowUp':
+        case '':
             enemy.velocity.y = -20
             break
         case 'ArrowDown':
-            enemy.isAttacking = true
+            enemy.attack()
+            break
+        case 'Home':
+            enemy.ultimate_attack()
             break
     }
 })
