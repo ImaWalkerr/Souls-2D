@@ -8,93 +8,25 @@ ctx.fillRect(0, 0 , canvas.width, canvas.height)
 
 const gravity = 0.7
 
-class Sprite {
-    constructor({ position, velocity, color = 'red', offset, ult_offset }) {
-        this.position = position
-        this.velocity = velocity
-        this.width = 50
-        this.height = 150
-        this.lastKey
-        this.attackBox = {
-            position: {
-                x: this.position.x,
-                y: this.position.y
-            },
-            offset,
-            width: 100,
-            height: 50,
-        }
-        this.UltimateAttackBox = {
-            position: {
-                x: this.position.x,
-                y: this.position.y
-            },
-            ult_offset,
-            width: 300,
-            height: 50,
-        }
-        this.color = color
-        this.isAttacking
-        this.isUltimateAttacking
-    }
+const background = new Sprite({
+    position: {
+        x: 0,
+        y: 0,
+    },
+    imageSrc: './images/background/background_1.png'
+})
 
-    draw () {
-        ctx.fillStyle = this.color
-        ctx.fillRect(this.position.x, this.position.y, this.width, this.height)
+const shop = new Sprite({
+    position: {
+        x: 1250,
+        y: 370  ,
+    },
+    imageSrc: './images/background/shop.png',
+    scale: 3,
+    framesMax: 6
+})
 
-        // attack box //
-        if (this.isAttacking) {
-            ctx.fillStyle = 'green'
-            ctx.fillRect(
-                this.attackBox.position.x,
-                this.attackBox.position.y,
-                this.attackBox.width,
-                this.attackBox.height
-            )
-        }
-        if (this.isUltimateAttacking) {
-            ctx.fillStyle = 'yellow'
-            ctx.fillRect(
-                this.UltimateAttackBox.position.x,
-                this.UltimateAttackBox.position.y,
-                this.UltimateAttackBox.width,
-                this.UltimateAttackBox.height
-            )
-        }
-    }
-
-    update () {
-        this.draw()
-
-        this.attackBox.position.x = this.position.x + this.attackBox.offset.x
-        this.attackBox.position.y = this.position.y
-        this.UltimateAttackBox.position.x = this.position.x + this.UltimateAttackBox.ult_offset.x
-        this.UltimateAttackBox.position.y = this.position.y
-        this.position.x += this.velocity.x
-        this.position.y += this.velocity.y
-
-        if (this.position.y + this.height + this.velocity.y >= canvas.height) {
-            this.velocity.y = 0
-        } else {
-            this.velocity.y += gravity
-        }
-    }
-
-    attack () {
-        this.isAttacking = true
-        setTimeout(() => {
-            this.isAttacking = false
-        }, 100)
-    }
-    ultimate_attack () {
-        this.isUltimateAttacking = true
-        setTimeout(() => {
-            this.isUltimateAttacking = false
-        }, 100)
-    }
-}
-
-const player = new Sprite({
+const player = new Fighter({
     position: {
         x: 0,
         y: 0,
@@ -113,7 +45,7 @@ const player = new Sprite({
     }
 })
 
-const enemy = new Sprite({
+const enemy = new Fighter({
     position: {
         x: 400,
         y: 100,
@@ -151,28 +83,14 @@ const keys = {
     }
 }
 
-function rectangularCollision({ rectangle_1, rectangle_2 }) { // rectangle_1 = player, rectangle_2 = enemy //
-    return (
-        rectangle_1.attackBox.position.x + rectangle_1.attackBox.width >= rectangle_2.position.x &&
-        rectangle_1.attackBox.position.x <= rectangle_2.position.x + rectangle_2.width &&
-        rectangle_1.attackBox.position.y + rectangle_1.attackBox.height >= rectangle_2.position.y &&
-        rectangle_1.attackBox.position.y <= rectangle_2.position.y + rectangle_2.height
-    )
-}
-
-function rectangularCollisionForUltimate({ rectangle_1, rectangle_2 }) {
-    return (
-        rectangle_1.UltimateAttackBox.position.x + rectangle_1.UltimateAttackBox.width >= rectangle_2.position.x &&
-        rectangle_1.UltimateAttackBox.position.x <= rectangle_2.position.x + rectangle_2.width &&
-        rectangle_1.UltimateAttackBox.position.y + rectangle_1.UltimateAttackBox.height >= rectangle_2.position.y &&
-        rectangle_1.UltimateAttackBox.position.y <= rectangle_2.position.y + rectangle_2.height
-    )
-}
+decreaseTimer()
 
 function animation() {
     window.requestAnimationFrame(animation)
     ctx.fillStyle = 'black'
     ctx.fillRect(0,0, canvas.width, canvas.height)
+    background.update()
+    shop.update()
     player.update()
     enemy.update()
 
@@ -206,7 +124,8 @@ function animation() {
         player.isAttacking
     ) {
         player.isAttacking = false
-        console.log('player attack successful')
+        enemy.health -= 15
+        document.querySelector('#enemyHealth').style.width = enemy.health + '%'
     }
 
     if (
@@ -217,7 +136,8 @@ function animation() {
         enemy.isAttacking
     ) {
         enemy.isAttacking = false
-        console.log('enemy attack successful')
+        player.health -= 15
+        document.querySelector('#playerHealth').style.width = player.health + '%'
     }
 
     if (
@@ -228,7 +148,8 @@ function animation() {
         player.isUltimateAttacking
     ) {
         player.isUltimateAttacking = false
-        console.log('player ultimate attack successful')
+        enemy.health -= 30
+        document.querySelector('#enemyHealth').style.width = enemy.health + '%'
     }
 
     if (
@@ -239,9 +160,14 @@ function animation() {
         enemy.isUltimateAttacking
     ) {
         enemy.isUltimateAttacking = false
-        console.log('enemy ultimate attack successful')
+        player.health -= 30
+        document.querySelector('#playerHealth').style.width = player.health + '%'
     }
 
+    // end game based on players health //
+    if (enemy.health <= 0 || player.health <= 0) {
+        determineWinner({ player, enemy, timerId })
+    }
 }
 
 animation()
@@ -280,10 +206,10 @@ window.addEventListener('keydown', (event) => {
         case '':
             enemy.velocity.y = -20
             break
-        case 'ArrowDown':
+        case 'Home':
             enemy.attack()
             break
-        case 'Home':
+        case 'PageUp':
             enemy.ultimate_attack()
             break
     }
@@ -310,3 +236,7 @@ window.addEventListener('keyup', (event) => {
             break
     }
 })
+
+window.addEventListener('keydown', changeColorSkillsPlayer_1, false);
+window.addEventListener('keydown', changeColorSkillsPlayer_2, false);
+

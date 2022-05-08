@@ -13,29 +13,52 @@
     <div class="block">
         <div class="block__header">
             <div class="block__player_1">
-                <div class="block__name-player_1"></div>
-                <div class="block__health-player_1"></div>
+                <div class="block__name-player_1">
+                    <div class="block__triangle_1-player_1"></div>
+                    <div class="name__player_1">Player 1 name</div>
+                    <div class="block__triangle_2-player_1"></div>
+                </div>
+                <div class="block__health-player_1">
+                    <div class="player_1__health">Player 1 health</div>
+                    <div id="playerHealth" class="player_1__health-main">Player 1 health</div>
+                </div>
                 <div class="block__skills-player_1">
-                    <div class="player__skills">1</div>
-                    <div class="player__skills">2</div>
-                    <div class="player__skills">3</div>
+                    <div class="player_1__skill">1</div>
+                    <div class="player_1__skill">Ultimate</div>
+                    <div class="block__triangle_1"></div>
                 </div>
             </div>
             <div class="block__time">
-                <div class="block__timer">60</div>
+                <div class="block__round">Round 1</div>
+                <div id="timer" class="block__timer">60</div>
             </div>
             <div class="block__player_2">
-                <div class="block__name-player_2"></div>
-                <div class="block__health-player_2"></div>
+                <div class="block__name-player_2">
+                    <div class="block__triangle_1-player_2"></div>
+                    <div class="name__player_2">Player 2 name</div>
+                    <div class="block__triangle_2-player_2"></div>
+                </div>
+                <div class="block__health-player_2">
+                    <div class="player_2__health">Player 2 health</div>
+                    <div id="enemyHealth" class="player_2__health-main">Player 2 health</div>
+                </div>
                 <div class="block__skills-player_2">
-                    <div class="player__skills">1</div>
-                    <div class="player__skills">2</div>
-                    <div class="player__skills">3</div>
+                    <div class="block__triangle_2"></div>
+                    <div class="player_2__skill">Ultimate</div>
+                    <div class="player_2__skill">1</div>
                 </div>
             </div>
         </div>
+        <div id="displayText" class="block__center">DRAW</div>
+        <div class="block__footer">
+            <div class="block__change-heroes">Change heroes</div>
+            <div class="block__change-backgrounds">Change maps</div>
+            <div class="block__change-feedback">Give feedback </div>
+        </div>
         <canvas id="canvas"></canvas>
     </div>
+<script src="js/utils.js"></script>
+<script src="js/classes.js"></script>
 <script src="game.js"></script>
 </body>
 </html>

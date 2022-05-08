@@ -12,6 +12,7 @@ canvas {
     position: absolute;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
     padding: 25px;
 }
@@ -24,67 +25,214 @@ canvas {
 
 .block__name-player_1,
 .block__name-player_2 {
-    border-bottom: 30px solid burlywood;;
+    display: flex;
 }
 
-.block__name-player_1 {
+.block__triangle_1-player_1,
+.block__triangle_2-player_1,
+.block__triangle_1-player_2,
+.block__triangle_2-player_2 {
+    border-bottom: 30px solid burlywood;
+}
+
+.name__player_1,
+.name__player_2 {
+    width: 75%;
+    background-color: burlywood;
+    padding: 6px;
+}
+
+.name__player_1 {
+    text-align: left;
+}
+
+.name__player_2 {
+    text-align: right;
+}
+
+.block__triangle_1-player_1 {
     border-left: 100px solid transparent;
 }
 
-.block__name-player_2 {
+.block__triangle_2-player_1 {
+    border-right: 320px solid transparent;
+}
+
+.block__triangle_1-player_2 {
+    border-left: 320px solid transparent;
+}
+
+.block__triangle_2-player_2 {
     border-right: 100px solid transparent;
 }
 
-.block__health-player_1,
-.block__health-player_2 {
-    height: 40px;
+.block__health-player_1 {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    height: 30px;
     width: 100%;
 }
 
-.block__health-player_1 {
-    background-color: fuchsia;
+.block__health-player_2 {
+    position: relative;
+    height: 30px;
+    width: 100%;
 }
 
-.block__health-player_2 {
+.player_1__health {
+    text-align: left;
+    height: 30px;
+    width: 100%;
+    background-color: fuchsia;
+    padding: 6px;
+}
+
+.player_2__health {
+    text-align: right;
+    height: 30px;
     background-color: chartreuse;
+    padding: 6px;
+}
+
+.player_1__health-main {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: deeppink;
+    padding: 6px;
+}
+
+.player_2__health-main {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: deeppink;
+    padding: 6px;
+}
+
+.player_1__health-main {
+    text-align: left;
+}
+.player_2__health-main {
+    text-align: right;
 }
 
 .block__time {
+    position: absolute;
+    display: flex;
     flex-shrink: 0;
-    height: 150px;
-    width: 150px;
+    flex-direction: column;
+    align-items: center;
+    height: 120px;
+    width: 120px;
     background-color: aqua;
+    border-radius: 50%;
+    z-index: 5;
 }
 
-.block__timer {
+.block__round {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     text-align: center;
     justify-content: center;
     height: 100px;
     width: 100px;
-    padding: 25px;
-    margin: 25px;
+}
+
+.block__timer {
+    display: flex;
+    align-items: flex-start;
+    text-align: center;
+    justify-content: center;
+    height: 100px;
+    width: 100px;
+    padding: 10px 25px;
 }
 
 .block__skills-player_1,
 .block__skills-player_2 {
     display: flex;
-    border-top: 40px solid red;
 }
 
-
-.block__skills-player_1 {
+.block__triangle_1 {
+    border-top: 30px solid red;
     border-right: 320px solid transparent;
 }
 
-.block__skills-player_2 {
+.block__triangle_2 {
+    border-top: 30px solid red;
     border-left: 320px solid transparent;
 }
 
-.player__skills {
+.player_1__skill,
+.player_1__ultimate,
+.player_2__skill,
+.player_2__ultimate,
+.player_1__active-skill,
+.player_2__active-skill {
     text-align: center;
-    height: 40px;
-    width: 100%;
+    height: 30px;
+    width: 50%;
     background-color: coral;
+    padding: 10px;
+}
+
+.player_1__active-skill,
+.player_2__active-skill {
+    background-color: blueviolet;
+}
+
+.block__center {
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    color: white;
+}
+
+.block__footer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    width: 100%;
+    background-color: white;
+    bottom: 0;
+}
+
+.block__change-heroes,
+.block__change-backgrounds,
+.block__change-feedback {
+    height: 80%;
+    width: 33%;
+    background-color: aqua;
+}
+
+.block__change-heroes {
+    padding: 10px;
+    margin: 10px 0 10px 10px;
+}
+
+.block__change-backgrounds {
+    height: 80%;
+    width: 33%;
+    background-color: aqua;
+    padding: 10px;
+    margin: 10px;
+}
+
+.block__change-feedback {
+    padding: 10px;
+    margin: 10px 10px 10px 0;
 }
