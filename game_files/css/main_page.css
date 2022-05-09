@@ -1,0 +1,46 @@
+/* canvas_main styles */
+
+canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, orangered, yellow);
+}
+
+#mainTitle {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    font-size: 120px;
+    text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+#mainTitle::before {
+    content: "Can you defeat your enemy?";
+    position: absolute;
+    left: 0;
+    bottom: -60%;
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+    color: black;
+}
+
+.block__link {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    font-size: 100px;
+    text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.7);
+    color: red;
+    padding: 10px;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}

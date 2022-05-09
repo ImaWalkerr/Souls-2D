@@ -1,8 +1,8 @@
-const canvas =document.getElementById('canvas');
+const canvas =document.getElementById('canvas_game');
 const ctx = canvas.getContext('2d');
 
-canvas.width = innerWidth //any width//
-canvas.height = innerHeight //any height//
+canvas.width = window.innerWidth //any width//
+canvas.height = window.innerHeight //any height//
 
 ctx.fillRect(0, 0 , canvas.width, canvas.height)
 
