@@ -17,38 +17,37 @@ function rectangularCollisionForUltimate({ rectangle_1, rectangle_2 }) {
 }
 
 function determineWinner ({ player, enemy, timerId }) {
-    clearTimeout(timerId)
-    document.querySelector('#displayText').style.display = 'flex'
+    clearTimeout(timerId);
+    document.querySelector('#displayText').style.display = 'flex';
     if (player.health === enemy.health) {
-        document.querySelector('#displayText').innerHTML = 'DRAW'
+        document.querySelector('#displayText').innerHTML = 'DRAW';
     } else if (player.health > enemy.health) {
-        document.querySelector('#displayText').innerHTML = 'Player 1 Wins'
+        document.querySelector('#displayText').innerHTML = 'Player 1 Wins';
     }
     else if (player.health < enemy.health) {
-        document.querySelector('#displayText').innerHTML = 'Player 2 Wins'
+        document.querySelector('#displayText').innerHTML = 'Player 2 Wins';
     }
 }
 
 // round timer //
-let timer = 60
-let timerId
+let timer = 60;
+let timerId;
 function decreaseTimer() {
     if (timer > 0) {
-        timerId = setTimeout(decreaseTimer, 1000)
-        timer--
-        document.querySelector('#timer').innerHTML = timer
+        timerId = setTimeout(decreaseTimer, 1000);
+        timer--;
+        document.querySelector('#timer').innerHTML = timer;
     }
     // end game based on time //
     if (timer === 0) {
-        determineWinner({ player, enemy, timerId })
+        determineWinner({ player, enemy, timerId });
     }
 }
 
 // change block color when activating skill//
 let i = 0,
     skill_player_1 = document.querySelectorAll('.player_1__skill'),
-    skill_player_2 = document.querySelectorAll('.player_2__skill'),
-    color = document.querySelector('.color');
+    skill_player_2 = document.querySelectorAll('.player_2__skill');
 
 if (i == 0) {
     skill_player_1[i].className = 'player_1__active-skill';

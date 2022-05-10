@@ -19,8 +19,8 @@ window.addEventListener('mousemove', function (e) {
 });
 
 // drop item //
-const dino = new Image();
-dino.src = './images/items/flag_of_bhutan.png';
+const weapons = new Image();
+weapons.src = './images/items/weapon_assets.png';
 
 // gradient //
 let gradient = ctx.createLinearGradient(0,0,0, canvas.height);
@@ -31,16 +31,16 @@ gradient.addColorStop(1, 'rgba(255, 255, 255, 0.1)');
 // item settings //
 class Particle {
     constructor() {
-        this.radius = Math.random() * 200 + 20;
+        this.radius = Math.random() * 180 + 20; // image radius //
         this.x = Math.random() * canvas.width;
-        this.y = canvas.height + this.radius * 2; // random spawn - Math.random() * (canvas.height + this.radius * 2);
+        this.y = canvas.height + this.radius * 2;// random spawn - Math.random() * (canvas.height + this.radius * 2); //
         this.speedX = Math.random() * 3 - 1.5;
         this.speedY = Math.random() * 5 + 1;
         this.angle = Math.random() * 360;
         this.spin = Math.random() < 0.5 ? 1 : -1;
-        this.frameX = Math.floor(Math.random() * 3);
-        this.frameY = Math.floor(Math.random() * 3);
-        this.spriteSize = 900/3;
+        this.frameX = Math.floor(Math.random() * 5); // count of frames - width //
+        this.frameY = Math.floor(Math.random() * 5); // count of frames - height //
+        this.spriteSize = 160/5; // image width / frames //
     }
     update () {
         this.angle += 5;
@@ -53,7 +53,7 @@ class Particle {
         ctx.translate(this.x, this.y);
         ctx.rotate(this.angle * Math.PI/360 * this.spin);
         ctx.drawImage(
-            dino,
+            weapons,
             this.frameX * this.spriteSize,
             this.frameY * this.spriteSize,
             this.spriteSize,
