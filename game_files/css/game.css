@@ -26,72 +26,54 @@ canvas {
 .block__name-player_1,
 .block__name-player_2 {
     display: flex;
-}
-
-.block__triangle_1-player_1,
-.block__triangle_2-player_1,
-.block__triangle_1-player_2,
-.block__triangle_2-player_2 {
-    border-bottom: 30px solid burlywood;
+    align-items: center;
+    justify-content: center;
 }
 
 .name__player_1,
 .name__player_2 {
     width: 75%;
-    background-color: burlywood;
-    padding: 6px;
-}
-
-.name__player_1 {
-    text-align: left;
-}
-
-.name__player_2 {
-    text-align: right;
-}
-
-.block__triangle_1-player_1 {
-    border-left: 100px solid transparent;
-}
-
-.block__triangle_2-player_1 {
-    border-right: 320px solid transparent;
-}
-
-.block__triangle_1-player_2 {
-    border-left: 320px solid transparent;
-}
-
-.block__triangle_2-player_2 {
-    border-right: 100px solid transparent;
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    background-image: url('file:///C:/Users/Merlion/Documents/Github/canvas_dragon_slayer/dragon_slayer/game_files/images/items/white.png');
+    background-color: white;
+    padding: 4px;
+    border-top: 4px solid white;
+    border-left: 4px solid white;
+    border-right: 4px solid white;
 }
 
 .block__health-player_1 {
     display: flex;
     justify-content: flex-end;
     position: relative;
-    height: 30px;
     width: 100%;
+    border: 4px solid white;
 }
 
 .block__health-player_2 {
     position: relative;
-    height: 30px;
     width: 100%;
+    border: 4px solid white;
 }
 
 .player_1__health {
     text-align: left;
     height: 30px;
     width: 100%;
-    background-color: fuchsia;
+    font-size: 18px;
+    color: white;
+    background-image: url('file:///C:/Users/Merlion/Documents/Github/canvas_dragon_slayer/dragon_slayer/game_files/images/items/black.png');
     padding: 6px;
 }
 
 .player_2__health {
     text-align: right;
     height: 30px;
-    background-color: chartreuse;
+    font-size: 18px;
+    color: white;
+    background-image: url('file:///C:/Users/Merlion/Documents/Github/canvas_dragon_slayer/dragon_slayer/game_files/images/items/black.png');
     padding: 6px;
 }
 
@@ -102,7 +84,10 @@ canvas {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: deeppink;
+    font-size: 18px;
+    color: white;
+    background-image: url('file:///C:/Users/Merlion/Documents/Github/canvas_dragon_slayer/dragon_slayer/game_files/images/items/red.png');
+    background-color: red;
     padding: 6px;
 }
 
@@ -112,7 +97,10 @@ canvas {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: deeppink;
+    font-size: 18px;
+    color: white;
+    background-image: url('file:///C:/Users/Merlion/Documents/Github/canvas_dragon_slayer/dragon_slayer/game_files/images/items/blue.png');
+    background-color: blue;
     padding: 6px;
 }
 
@@ -129,11 +117,15 @@ canvas {
     flex-shrink: 0;
     flex-direction: column;
     align-items: center;
+    font-size: 20px;
+    color: white;
+    background-image: url('file:///C:/Users/Merlion/Documents/Github/canvas_dragon_slayer/dragon_slayer/game_files/images/items/fire.png');
     height: 120px;
     width: 120px;
-    background-color: aqua;
     border-radius: 50%;
+    border: 4px solid white;
     z-index: 5;
+    cursor: pointer;
 }
 
 .block__round {
@@ -158,15 +150,17 @@ canvas {
 .block__skills-player_1,
 .block__skills-player_2 {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .block__triangle_1 {
-    border-top: 30px solid red;
+    border-top: 30px solid white;
     border-right: 320px solid transparent;
 }
 
 .block__triangle_2 {
-    border-top: 30px solid red;
+    border-top: 30px solid white;
     border-left: 320px solid transparent;
 }
 
@@ -179,13 +173,18 @@ canvas {
     text-align: center;
     height: 30px;
     width: 50%;
-    background-color: coral;
-    padding: 10px;
+    font-size: 18px;
+    color: black;
+    background-color: red;
+    padding: 4px;
+    border-left: 4px solid white;
+    border-right: 4px solid white;
+    border-bottom: 4px solid white;
 }
 
 .player_1__active-skill,
 .player_2__active-skill {
-    background-color: blueviolet;
+    background-color: darkorange;
 }
 
 .block__center {
@@ -197,6 +196,8 @@ canvas {
     right: 0;
     bottom: 0;
     left: 0;
+    font-size: 80px;
+    text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.7);
     color: white;
 }
 
@@ -205,34 +206,21 @@ canvas {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100px;
     width: 100%;
-    background-color: white;
+    height: 50px;
+    left: 0;
     bottom: 0;
+    color: white;
+    background-color: black;
+    border: 4px solid white;
+    padding: 15px;
 }
 
-.block__change-heroes,
-.block__change-backgrounds,
-.block__change-feedback {
-    height: 80%;
+.block__menu {
     width: 33%;
-    background-color: aqua;
-}
-
-.block__change-heroes {
-    padding: 10px;
-    margin: 10px 0 10px 10px;
-}
-
-.block__change-backgrounds {
-    height: 80%;
-    width: 33%;
-    background-color: aqua;
-    padding: 10px;
-    margin: 10px;
-}
-
-.block__change-feedback {
-    padding: 10px;
-    margin: 10px 10px 10px 0;
+    text-align: center;
+    font-size: 25px;
+    text-shadow: 0 -5px 2px rgba(0, 0, 0, 0.7);
+    color: white;
+    cursor: pointer;
 }
