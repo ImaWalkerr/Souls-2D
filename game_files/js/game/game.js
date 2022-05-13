@@ -26,8 +26,8 @@ const tiles = new Sprite({
 
 const player = new Fighter({
     position: {
-        x: 0,
-        y: 0,
+        x: 300,
+        y: 100,
     },
     velocity: {
         x: 0,
@@ -102,7 +102,7 @@ const player = new Fighter({
 
 const enemy = new Fighter({
     position: {
-        x: 400,
+        x: 1400,
         y: 100,
     },
     velocity: {

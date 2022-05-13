@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="image/x-icon" href="../favicon.ico" rel="shortcut icon">
     <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/null.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/game.css" />
+    <script src="https://kit.fontawesome.com/384785ee12.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="block" class="block">
+    <div id="block" class="block lock-padding">
         <div class="block__header">
             <div class="block__player_1">
                 <div class="block__name-player_1">
@@ -45,11 +46,76 @@
             </div>
         </div>
         <div id="displayText" class="block__center">DRAW</div>
-        <canvas id="canvas_game"></canvas>
         <div class="block__footer">
-            <a class="block__menu" href="main_page.html">Back To Main</a>
-            <div class="block__menu">Controls</div>
-            <div class="block__menu">Future updates...</div>
+            <a class="block__back" href="main_page.html">Back To Main</a>
+            <a class="block__controls popup-link" href="#popup_controls">Controls (EN) and rules</a>
+            <a class="block__updates popup-link" href="#popup_updates">Future updates...</a>
+        </div>
+        <canvas id="canvas_game"></canvas>
+    </div>
+    <div id="popup_controls" class="popup">
+        <div class="popup__body">
+            <div class="popup__content">
+                <a href="#block" class="popup__close popup-close">
+                    <i class="fa-solid fa-circle-xmark btn-black"></i>
+                </a>
+                <div class="popup__title">Game info</div>
+                <div class="popup__text">Rules:</div>
+                <div class="popup__text-rules">
+                    <div class="popup__rules-info">
+                        <div class="popup__rules">
+                            The time of each round is limited - 60 sec. Then game will ends.
+                        </div>
+                        <div class="popup__rules">
+                            How to win? It's simple - you need to lower the other player's HP bar to 0.
+                        </div>
+                        <div class="popup__rules">
+                            If the time is up and both players are alive,
+                            the player with the most HP at the end of the timer will win.</div>
+                    </div>
+                </div>
+                <div class="popup__text">Controls (EN):</div>
+                <div class="popup__text-keyboard">
+                    <div class="popup__text-info">
+                        <div class="popup__text-player_1">Player &#10102;</div>
+                        <div class="popup__keys">Press A and D to move left - right</div>
+                        <div class="popup__keys">Press W to jump</div>
+                        <div class="popup__keys">Press Space to use base attacks</div>
+                        <div class="popup__keys">Press E to use ultimate attacks</div>
+                    </div>
+                    <div class="popup__text-info">
+                        <div class="popup__text-player_2">Player &#10103; (need active Num Lock)</div>
+                        <div class="popup__keys">Press &#8592; and &#8594; to move left - right</div>
+                        <div class="popup__keys">Press &#8593; to jump</div>
+                        <div class="popup__keys">Press 7 (Home) to use base attacks</div>
+                        <div class="popup__keys">Press 9 (PgUp) to use ultimate attacks</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="popup_updates" class="popup">
+        <div class="popup__body">
+            <div class="popup__content">
+                <a href="#block" class="popup__close popup-close">
+                    <i class="fa-solid fa-circle-xmark btn-black"></i>
+                </a>
+                <div class="popup__title">Updates info</div>
+                <div class="popup__text-updates">
+                    <div class="popup__updates-info">
+                        <div class="popup__updates-title">
+                            List of completed updates will be posted here.
+                        </div>
+                        <div class="popup__updates">...</div>
+                    </div>
+                    <div class="popup__updates-info">
+                        <div class="popup__updates-title">
+                            List of future updates will be posted here.
+                        </div>
+                        <div class="popup__updates">...</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 <script type="text/javascript" src="js/main_page/popup.js"></script>

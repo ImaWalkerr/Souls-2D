@@ -216,7 +216,9 @@ canvas {
     padding: 15px;
 }
 
-.block__menu {
+.block__controls,
+.block__back,
+.block__updates {
     width: 33%;
     text-align: center;
     font-size: 25px;
