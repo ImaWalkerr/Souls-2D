@@ -29,7 +29,7 @@
             </div>
             <div class="block__time">
                 <div class="block__round">Round</div>
-                <div id="timer" class="block__timer">60</div>
+                <div id="timer" class="block__timer"></div>
             </div>
             <div class="block__player_2">
                 <div class="block__name-player_2">
@@ -48,6 +48,7 @@
         <div id="displayText" class="block__center">DRAW</div>
         <div class="block__footer">
             <a class="block__back" href="main_page.html">Back To Main</a>
+            <a class="block__restart" href="#" onclick="location.reload(); return false;">Restart Game</a>
             <a class="block__controls popup-link" href="#popup_controls">Controls (EN) and rules</a>
             <a class="block__updates popup-link" href="#popup_updates">Future updates...</a>
         </div>
@@ -64,7 +65,7 @@
                 <div class="popup__text-rules">
                     <div class="popup__rules-info">
                         <div class="popup__rules">
-                            The time of each round is limited - 60 sec. Then game will ends.
+                            The time of each round is limited - 3 min. Then game will ends.
                         </div>
                         <div class="popup__rules">
                             How to win? It's simple - you need to lower the other player's HP bar to 0.

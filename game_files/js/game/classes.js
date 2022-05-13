@@ -55,7 +55,6 @@ class Fighter extends Sprite {
     constructor({
         position,
         velocity,
-        color = 'red',
         ult_offset,
         imageSrc,
         scale = 1,
@@ -102,7 +101,6 @@ class Fighter extends Sprite {
             width: ultimateAttackBox.width,
             height: ultimateAttackBox.height,
         }
-        this.color = color;
         this.isAttacking;
         this.isUltimateAttacking;
         this.health = 100;

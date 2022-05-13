@@ -30,7 +30,7 @@ function determineWinner ({ player, enemy, timerId }) {
 }
 
 // round timer //
-let timer = 60;
+let timer = 180;
 let timerId;
 function decreaseTimer() {
     if (timer > 0) {

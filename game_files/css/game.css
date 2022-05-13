@@ -82,7 +82,6 @@ canvas {
     top: 0;
     right: 0;
     bottom: 0;
-    left: 0;
     width: 100%;
     font-size: 18px;
     color: white;
@@ -120,6 +119,7 @@ canvas {
     font-size: 20px;
     color: white;
     background-image: url('file:///C:/Users/Merlion/Documents/Github/canvas_dragon_slayer/dragon_slayer/game_files/images/items/fire.png');
+    background-color: black;
     height: 120px;
     width: 120px;
     border-radius: 50%;
@@ -218,6 +218,7 @@ canvas {
 
 .block__controls,
 .block__back,
+.block__restart,
 .block__updates {
     width: 33%;
     text-align: center;
